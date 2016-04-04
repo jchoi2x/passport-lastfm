@@ -35,7 +35,7 @@ passport.use(new LastFmStrategy({
     User.findById(req.user.id, (err, user) => {
       if (err) return done(err);
 
-      var creds = _.find(req.user.tokens, {type:'soundcloud'});
+      var creds = _.find(req.user.tokens, {type:'lastfm'});
       // if creds already present
       if (user.lastfm && creds){
         req.flash('info', {msg:'Account already linked'});
