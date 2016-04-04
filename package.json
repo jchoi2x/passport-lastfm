@@ -1,5 +1,5 @@
 {
-  "name": "@kizzle/passport_lastfm",
+  "name": "passport-lastfm",
   "version": "1.0.0",
   "description": "Login strategy for passportjs for authentication with last.fm",
   "main": "index.js",

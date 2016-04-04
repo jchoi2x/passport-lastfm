@@ -2,20 +2,26 @@
 Last.fm authentication strategy for Passport and Node.js.  Please contribute if you like!
 
 
+
+
+
 ## Installation
 ---------
 `npm install passport-lastfm --save`
+
+create a `api_key` and `secret` by [registering your app](http://www.last.fm/api/account/create)
 
 
 
 ## Usage
 -----------
 
-Set up passport strategies
+Set up passport strategies.  Be sure initialize with api_key and secret
 
 ```
 var LastFMStrategy = require('passport-lastfm')
 var _ = require('lodash');
+var cb_url = 'http://localhost:8000';
 
 passport.use(new LastFmStrategy({
   'api_key': process.env.LASTFM_KEY,
