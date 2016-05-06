@@ -19,7 +19,7 @@ create a `api_key` and `secret` by [registering your app](http://www.last.fm/api
 
 Set up passport strategies.  Be sure initialize with api_key and secret
 
-```
+```javascript
 var LastFMStrategy = require('passport-lastfm')
 var _ = require('lodash');
 var cb_url = 'http://localhost:8000';
@@ -40,7 +40,6 @@ passport.use(new LastFmStrategy({
       // if creds already present
       if (user.lastfm && creds){
         req.flash('info', {msg:'Account already linked'});
-
         return done(err, user, {msg:'Account already linked'})
       }
 
@@ -66,7 +65,7 @@ passport.use(new LastFmStrategy({
 
 
 In route handlers
-```
+```javascript
 app.get('/auth/lastfm', passport.authenticate('lastfm'));
 app.get('/auth/lastfm/callback', function(req, res, next){
   passport.authenticate('lastfm', {failureRedirect:'/'}, function(err, user, sesh){
