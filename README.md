@@ -1,5 +1,5 @@
 # passport-lastfm
-[![Build Status](https://travis-ci.org/kizzlebot/passport-lastfm.svg?branch=master)](https://travis-ci.org/kizzlebot/passport-lastfm)
+[![Build Status](https://travis-ci.org/kizzlebot/passport-lastfm.svg?branch=master)](https://travis-ci.org/kizzlebot/passport-lastfm)  
 Last.fm authentication strategy for Passport and Node.js.  Please contribute if you like!
 
 
