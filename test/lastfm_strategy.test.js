@@ -76,6 +76,32 @@ describe('Strategy', function() {
     });
   });
 
+  describe('authorization request with dynamic callback', function() {
+    var strategy = new LastFmStrategy({
+      callbackURL: req => req.cbProperty,
+      api_key: 'ABC123',
+      secret: 'secret'
+    }, function() {});
+
+
+    var url;
+
+    before(function(done) {
+      chai.passport.use(strategy)
+        .redirect(function(u) {
+          url = u;
+          done();
+        })
+        .req(function(req) {
+          req.cbProperty = 'fake-cb-url'
+        })
+        .authenticate({ display: 'mobile' });
+    });
+
+    it('should be redirected to lastfm for auth with the dynamic cb url', function() {
+      expect(url).to.equal('http://www.last.fm/api/auth?api_key=ABC123&cb=fake-cb-url');
+    });
+  });
 
 
 
