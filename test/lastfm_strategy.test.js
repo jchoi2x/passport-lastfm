@@ -47,9 +47,36 @@ describe('Strategy', function() {
     });
 
     it('should be redirected to lastfm for auth', function() {
-      expect(url).to.equal('http://www.last.fm/api/auth?api_key=ABC123&cb=http://localhost:8000');
+      expect(url).to.equal('http://www.last.fm/api/auth?api_key=ABC123&cb=http%3A%2F%2Flocalhost%3A8000');
     });
   });
+
+  describe('authorization request with no callback', function() {
+    var strategy = new LastFmStrategy({
+      api_key: 'ABC123',
+      secret: 'secret'
+    }, function() {});
+
+
+    var url;
+
+    before(function(done) {
+      chai.passport.use(strategy)
+        .redirect(function(u) {
+          url = u;
+          done();
+        })
+        .req(function(req) {
+        })
+        .authenticate({ display: 'mobile' });
+    });
+
+    it('should be redirected to lastfm for auth', function() {
+      expect(url).to.equal('http://www.last.fm/api/auth?api_key=ABC123');
+    });
+  });
+
+
 
 
 
